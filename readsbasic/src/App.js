@@ -30,10 +30,10 @@ function App() {
       <div className="App">
         <SideBar/>
         <Article/>
-        <h1 className="text-3xl font-bold underline">ReadsBasic</h1>
+        {/* <h1 className="text-3xl font-bold underline">ReadsBasic</h1>
         <p className='text-green-400'>Read the articles you want all in one place</p> 
         <p>{curId}</p>
-        <input type="button" onClick={addItem} value={buttonVal} className='testButton'/>
+        <input type="button" onClick={addItem} value={buttonVal} className='testButton'/> */}
       </div>
     </Provider>
   );
