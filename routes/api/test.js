@@ -7,8 +7,6 @@ const Test = require('../../models/Test')
 // @desc 
 router.post('/addVal', async(req, res) => {
     try {
-        // console.log(req);
-        console.log(req.body);
         const newItem = new Test({
             buttonValue: req.body.buttonVal
         })

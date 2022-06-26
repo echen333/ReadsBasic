@@ -1,1 +1,1 @@
-export const TEST_ADD = 'GET_REPOS';
+export const TEST_ADD = 'TEST_ADD';

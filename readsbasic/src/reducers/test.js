@@ -13,7 +13,7 @@ import {
       case TEST_ADD:
         return {
           ...state,
-          testId: payload,
+          testId: payload._id,
         };
       default:
         return state;
