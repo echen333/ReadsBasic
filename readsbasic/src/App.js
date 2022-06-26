@@ -1,9 +1,10 @@
 import logo from './logo.svg';
-import './App.css';
+// import './App.css';
 import { useEffect, useState } from 'react';
 
 import { addTest } from './actions/test';
 import { getArticle } from './actions/article';
+import './index.css';
 
 //Redux
 import { Provider } from 'react-redux'
@@ -25,8 +26,8 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <h1>ReadsBasic</h1>
-        <p>Read all the articles you want all in one place</p> 
+        <h1 className="text-3xl font-bold underline">ReadsBasic</h1>
+        <p>Read the articles you want all in one place</p> 
         <p>{curId}</p>
         <input type="button" onClick={addItem} value={buttonVal} className='testButton'/>
       </div>
