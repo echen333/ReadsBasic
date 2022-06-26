@@ -29,7 +29,7 @@ router.get('/getAny/:numGet', async( { params: { numGet } }, res) => {
         const ret = await Article.aggregate([
             { $sample: { size: 2 } } //how to do variable
         ])
-        console.log(ret);
+        console.log(ret[0].title);
         res.json(ret);
     } catch(err){
         console.log(err.message);
