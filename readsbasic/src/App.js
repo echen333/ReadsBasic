@@ -3,6 +3,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 
 import { addTest } from './actions/test';
+import { getArticle } from './actions/article';
 
 //Redux
 import { Provider } from 'react-redux'
@@ -14,7 +15,9 @@ function App() {
   const [curId, setCurId] = useState(-1);
 
   const addItem = () => {
-    store.dispatch(addTest(buttonVal));
+    store.dispatch(getArticle(2));
+    console.log(store.getState().article.articles);
+    // store.dispatch(addTest(buttonVal));
     setButtonVal(buttonVal+1);
     setCurId(store.getState().test.testId);
   }
