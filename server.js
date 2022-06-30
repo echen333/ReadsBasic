@@ -5,7 +5,9 @@ const passport = require('passport');
 const session = require('express-session')
 const cookieParser = require('cookie-parser');
 // const cookieSession = require('cookie-session')
+const MongoStore = require('connect-mongo')(session);
 const app = express();
+const config = require('config');
 
 require('./config/passport-setup');
 
@@ -22,6 +24,9 @@ app.use(
         name: 'session',
         secret: "cats",
         keys: ['key1', 'key2'],
+        // saveUninitialized: true,
+        // resave: true,
+        // store: new MongoStore({ mongooseConnection: mongoose.connection }),
         cookie: {
             // secure: true,
             httpOnly: true,

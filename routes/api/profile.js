@@ -24,42 +24,27 @@ router.get('/me', async(req, res) => {
 router.put('/like/:art_id', auth, async(req, res) => {
     try {
         const {art_id} = req.params; 
-        console.log("HI BUDDY",art_id);
-        const user = await User.findById(req.user.id);
+        const user = await User.findById(req.user.id)
+            .populate('liked')
+            .populate('read');
         let art = await Article.findById(art_id);
-        const tmp =user.liked.filter(x => x._id===art_id);
-        console.log(tmp); 
-        if(!tmp.length > 0){//FUNC???
-            console.log("ADD");
+        const tmp = user.liked.filter(x => x._id.equals(art._id));
+        if((tmp.length > 0)){
+            console.log("REMOVE");
             user.liked.remove(art);
         } else {
-            console.log("REMOVE");
+            console.log("ADD");
             user.liked.push(art);
         }
+        // console.log(user);
         await user.save();
-        res.json("Success");
+        res.json(user);
     } catch(err){
         console.log(err.message);
         res.status(500);
     }
 });
 
-// @route PUT api/article/getAny
-// @desc manually add article to database
-// Private Route
-router.put('/unlike/:art_id', auth, async(req, res) => {
-    try {
-        const {art_id} = req.params; 
-        const user = await User.findById(req.user.id);
-        let art = await Article.findById(art_id);
-        user.liked.remove(art);
-        await user.save();
-        res.json("Success");
-    } catch(err){
-        console.log(err.message);
-        res.status(500);
-    }
-});
 
 // @route PUT api/article/getAny
 // @desc manually add article to database
@@ -69,26 +54,16 @@ router.put('/read/:art_id', auth, async(req, res) => {
         const {art_id} = req.params; 
         const user = await User.findById(req.user.id);
         let art = await Article.findById(art_id);
-        user.read.insert(art);
+        const tmp = user.read.filter(x => x._id.equals(art._id));
+        if((tmp.length > 0)){
+            console.log("REMOVE");
+            user.read.remove(art);
+        } else {
+            console.log("ADD");
+            user.read.push(art);
+        }
         await user.save();
-        res.json("Success");
-    } catch(err){
-        console.log(err.message);
-        res.status(500);
-    }
-});
-
-// @route PUT api/article/getAny
-// @desc manually add article to database
-// Private Route
-router.put('/unread/:art_id', auth, async(req, res) => {
-    try {
-        const {art_id} = req.params; 
-        const user = await User.findById(req.user.id);
-        let art = await Article.findById(art_id);
-        user.read.remove(art);
-        await user.save();
-        res.json("Success");
+        res.json(user);
     } catch(err){
         console.log(err.message);
         res.status(500);

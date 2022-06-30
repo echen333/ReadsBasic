@@ -1,6 +1,6 @@
 import {
-    ARTICLE_LIKE,
-    ARTICLE_READ
+    LIKE_ARTICLE,
+    READ_ARTICLE
 } from '../actions/types';
   
 const initialState = {
@@ -11,6 +11,12 @@ function testReducer(state = initialState, action) {
     const { type, payload } = action;
 
     switch (type) {
+        case LIKE_ARTICLE:
+        case READ_ARTICLE:
+            return {
+                ...state,
+                user: payload
+            };
         default:
             return state;
     }

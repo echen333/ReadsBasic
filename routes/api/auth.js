@@ -21,7 +21,7 @@ router.get('/me', async(req, res) => {
 // @desc 
 router.get('/', auth, async(req, res) => {
     try {
-        console.log(req.user);
+        // console.log(req.user);
         res.json(req.user);
 
     } catch(err){

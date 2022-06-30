@@ -7,11 +7,13 @@ import { loadUser } from './actions/auth';
 import { getArticle } from './actions/article';
 import './index.css';
 import SideBar from './components/Sidebar'
+import Liked from './components/Liked'
 
 //Redux
 import { Provider } from 'react-redux'
 import store from './store'
 import Article from './components/Article';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
 
@@ -36,14 +38,17 @@ function App() {
 
   return (
     <Provider store={store}>
-      <div className="App">
-        <SideBar/>
-        <Article/>
-        {/* <h1 className="text-3xl font-bold underline">ReadsBasic</h1>
-        <p className='text-green-400'>Read the articles you want all in one place</p> 
-        <p>{curId}</p>
-        <input type="button" onClick={addItem} value={buttonVal} className='testButton'/> */}
-      </div>
+      <Router>
+          <SideBar/>
+          <Routes>
+            <Route path='/' element={<Article/>}/>
+            <Route path='/liked' element={<Liked/>}/>
+          </Routes>
+          {/* <h1 className="text-3xl font-bold underline">ReadsBasic</h1>
+          <p className='text-green-400'>Read the articles you want all in one place</p> 
+          <p>{curId}</p>
+          <input type="button" onClick={addItem} value={buttonVal} className='testButton'/> */}
+      </Router>
     </Provider>
   );
 }
