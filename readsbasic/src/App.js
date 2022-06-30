@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import { useEffect, useState } from 'react';
 
 import { addTest } from './actions/test';
+import { loadUser } from './actions/auth';
 import { getArticle } from './actions/article';
 import './index.css';
 import SideBar from './components/Sidebar'
@@ -16,6 +17,14 @@ function App() {
 
   const [buttonVal, setButtonVal] = useState(1);
   const [curId, setCurId] = useState(-1);
+
+  useEffect( ()=> {
+    console.log("SE EFFECT");
+    store.dispatch(loadUser());
+    console.log("DONE");
+    if(store.getState().auth.user)
+      console.log(store.getState().auth.user.email)
+  },[])
 
   const addItem = () => {
     store.dispatch(getArticle(2));

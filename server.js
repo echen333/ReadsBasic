@@ -3,6 +3,7 @@ const express = require('express')
 const connectDB = require('./config/db')
 const passport = require('passport');
 const session = require('express-session')
+const cookieParser = require('cookie-parser');
 // const cookieSession = require('cookie-session')
 const app = express();
 
@@ -10,9 +11,11 @@ require('./config/passport-setup');
 
 connectDB();
 
-app.use(express.json());
+
 
 app.use(express.static("public"));
+
+app.set('trust proxy', 1);
 
 app.use(
     session({
@@ -20,13 +23,16 @@ app.use(
         secret: "cats",
         keys: ['key1', 'key2'],
         cookie: {
-        secure: true,
-        httpOnly: true,
-        maxAge: 24 * 60 * 60 * 1000 * 7
+            // secure: true,
+            httpOnly: true,
+            maxAge: 24 * 60 * 60 * 1000 * 7
         }
     })
 );
-// app.use(bodyParser.urlencoded({ extended:false }));
+
+app.use(express.json( { extended: false } ));
+
+app.use(cookieParser("cats"));
 app.use(passport.initialize());
 app.use(passport.session());
 

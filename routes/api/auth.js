@@ -3,12 +3,26 @@ const router = express.Router();
 const passport = require('passport');
 
 const User = require('../../models/User');
+const auth = require('../../middleware/auth');
 
 // @route GET api/auth/me
 // @desc 
 router.get('/me', async(req, res) => {
     try {
         res.json("Success");
+
+    } catch(err){
+        console.log(err.message);
+        res.status(500);
+    }
+});
+
+// @route GET api/auth/
+// @desc 
+router.get('/', auth, async(req, res) => {
+    try {
+        console.log(req.user);
+        res.json(req.user);
 
     } catch(err){
         console.log(err.message);
