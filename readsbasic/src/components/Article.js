@@ -43,6 +43,7 @@ function ArticleCard ( {article} ) {
                 p-3 cursor-pointer
                 " onClick={handleClick} >
                 <h1 className="font-bold"> {article.title} </h1>
+                {/* <p className="flex" dangerouslySetInnerHTML={{ __html: article.text.slice(0,150) }} /> */}
                 <p className="text-gray-600"> {article.text.slice(0,150)} </p>
             </div>
             <div className="bottom-6">

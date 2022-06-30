@@ -49,5 +49,6 @@ app.use('/api/profile', require('./routes/api/profile'));
 app.use('/api/test', require('./routes/api/test'));
 app.use('/api/article', require('./routes/api/article'));
 app.use('/api/auth', require('./routes/api/auth'));
+app.use('/api/scrape', require('./routes/api/scrape'));
 
 app.listen(PORT, ()=> console.log(`Server started on port ${PORT}`));
