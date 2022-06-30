@@ -14,7 +14,15 @@ const UserSchema = new mongoose.Schema({
     articlesRead: {
         type: [String]
     },
-    profileImageUrl: String
+    profileImageUrl: String,
+    liked: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Article'
+    }],
+    read: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Article'
+    }],
 })
 
 module.exports = User = mongoose.model('User', UserSchema);

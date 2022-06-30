@@ -4,3 +4,7 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
 export const USER_LOADED = 'USER_LOADED';
 export const AUTH_ERROR = 'AUTH_ERROR';
+export const LIKE_ARTICLE = 'LIKE_ARTICLE';
+export const READ_ARTICLE = 'READ_ARTICLE';
+export const GET_LIKE_ARTICLE = 'GET_LIKE_ARTICLE';
+export const GET_READ_ARTICLE = 'GET_READ_ARTICLE';

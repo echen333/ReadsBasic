@@ -37,22 +37,4 @@ router.get('/getAny/:numGet', async( { params: { numGet } }, res) => {
     }
 });
 
-//Private: like, unlike, read, unread, getXunreadArticles
-
-// // @route PUT api/article/getAny
-// // @desc manually add article to database
-// // Private Route
-// router.put('/like/:art_id', auth, async(req, res) => {
-//     try {
-//         const {art_id} = req.params; 
-//         const user = await User.findById(req.user.id);
-//         user.liked.
-
-//         res.json(ret);
-//     } catch(err){
-//         console.log(err.message);
-//         res.status(500);
-//     }
-// });
-
 module.exports = router;
