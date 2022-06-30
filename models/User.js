@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 
 const UserSchema = new mongoose.Schema({
     googleID: String,
-    secret: String,
     email: {
         type: String,
     },
@@ -14,7 +13,8 @@ const UserSchema = new mongoose.Schema({
     },
     articlesRead: {
         type: [String]
-    }
+    },
+    profileImageUrl: String
 })
 
 module.exports = User = mongoose.model('User', UserSchema);

@@ -8,17 +8,16 @@ function Articles ( {article, getArticle} ) {
     useEffect( () => {
         // store.dispatch(getArticle(2));
         getArticle(2);
-      },[])
-    //   },[getArticle]) ????? learn diff
+    //   },[])
+      },[getArticle])
 
     return (
-        <div className="">
-            <div className="text-center font-bold text-4xl">
-            {/* <div className="text-center font-bold text-4xl absolute left-1"> */}
+        <div className="w-3/5 p-3 mx-auto my-0.5 flex justify-center flex-col">
+            <div className="font-bold text-4xl">
                 Inbox
             </div>
-            {article.map( x => {
-                return <ArticleCard article={x}/>
+            {article.map( (x,ind) => {
+                return <ArticleCard  key={ind} article={x}/>
             })}
         </div>
     )
@@ -30,9 +29,9 @@ function ArticleCard ( {article} ) {
         window.open(article.link);
     };
     return (
-        <div className="p-3 w-80 text-center border-r-0
+        <div className="p-3 text-center border-r-0
         border-l-0 border-t-2 justify-center mx-auto my-0.5">
-            <div className="max-w-4xl h-40 
+            <div className="h-40 
                 hover:bg-gray-200 rounded-md
                 p-3 cursor-pointer
                 " onClick={handleClick} >

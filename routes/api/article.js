@@ -25,11 +25,11 @@ router.post('/addNew', async(req, res) => {
 // @desc return x random articles
 router.get('/getAny/:numGet', async( { params: { numGet } }, res) => {
     try {
-        console.log("HI", numGet);
+        // console.log("HI", numGet);
         const ret = await Article.aggregate([
             { $sample: { size: 5 } } //how to do variable
         ])
-        console.log(ret[0].title);
+        // console.log(ret[0].title);
         res.json(ret);
     } catch(err){
         console.log(err.message);
